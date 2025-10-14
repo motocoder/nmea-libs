@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group = 'llc.berserkr'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("junit:junit:4.4")
+
+}
+
+test {
+    useJUnitPlatform()
+}
