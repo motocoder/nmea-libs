@@ -1,9 +1,18 @@
 package llc.berserkr.nmea.n2k;
 
+import llc.berserkr.nmea.n2k.util.ByteUtils;
+
 public class CANID {
 
     private static byte PRIORITY_AND = (byte) 0xE0;
-    private final int priority;
+    private static byte RESERVED_AND = (byte) 0x10;
+    private static byte DATAPAGE_AND = (byte) 0x08;
+    private static byte PDU_SHIFT_AND = (byte) 0x1F;
+    private final byte priority;
+    private final boolean reserved;
+    private final boolean datapage;
+    private final byte pduFormat;
+    private final byte sourceAddress;
 
     /*
 
@@ -46,41 +55,50 @@ public class CANID {
 
     public CANID(final byte[] rawPacket) {
 
-        this.priority = rawPacket[0] & PRIORITY_AND;
-    }
+        this.priority = (byte)(rawPacket[0] & PRIORITY_AND);
+        this.reserved = (rawPacket[0] & RESERVED_AND) == 16;
+        this.datapage = (rawPacket[0] & DATAPAGE_AND) == 8;
 
-    public static byte[] hexStringToByteArray(String s) {
+        {
+            //after shift we are using the left 3 bits, everything else is zero
+            int shifted = (rawPacket[0] << 5) & PRIORITY_AND; // & 0XE0 makes everything right of the 3rd bit zero
 
-        int len = s.length();
+            int shiftedRight = (rawPacket[1] >> 3) & PDU_SHIFT_AND;
 
-        if(len % 2 != 0) {
-            throw new RuntimeException("s must be an even-length string.");
+            //take left 3 bites from shifted, right 5 bits from shiftedRight and make the pdu value
+            this.pduFormat = (byte)(shifted | shiftedRight);
+
         }
 
-        byte[] data = new byte[len / 2];
-        for (int i = 0; i < len; i += 2) {
-            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
-                    + Character.digit(s.charAt(i+1), 16));
+        {
+
+            int shiftedLeft = (rawPacket[1] << 5) & PRIORITY_AND; //re-using priority shift
+
+            int shiftedRight = (rawPacket[2] >>> 3) & PDU_SHIFT_AND; //re-using pdu shift
+
+            this.sourceAddress = (byte)(shiftedLeft | shiftedRight);
+
         }
-        return data;
+
+
     }
 
-    public static void printByteAsBits(byte b) {
-        StringBuilder binaryString = new StringBuilder();
-        // Iterate from the most significant bit (7) down to the least significant bit (0)
-        for (int i = 7; i >= 0; i--) {
-            // Use bitwise AND with a mask to check if the i-th bit is set
-            // The mask is 1 shifted left by i positions
-            if ((b & (1 << i)) != 0) {
-                binaryString.append("1");
-            } else {
-                binaryString.append("0");
-            }
-        }
-        System.out.println("Byte " + b + " in binary: " + binaryString.toString());
+    public boolean getReserved() {
+        return reserved;
     }
 
-    public int getPriority() {
+    public boolean getDatapage() {
+        return datapage;
+    }
+
+    public int getPduFormat() {
+        return pduFormat;
+    }
+
+    public int getSourceAddress() {
+        return sourceAddress;
+    }
+    public byte getPriority() {
         return priority;
     }
 }
