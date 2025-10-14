@@ -3,10 +3,10 @@ package net.sf.marineapi.nmea.parser;
 import net.sf.marineapi.nmea.sentence.MMBSentence;
 import net.sf.marineapi.nmea.sentence.SentenceId;
 import net.sf.marineapi.nmea.sentence.TalkerId;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * MMBTest
@@ -20,7 +20,7 @@ public class MMBTest {
     MMBSentence mmb;
     MMBSentence empty;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mmb = new MMBParser(EXAMPLE);
         empty = new MMBParser(TalkerId.WI);

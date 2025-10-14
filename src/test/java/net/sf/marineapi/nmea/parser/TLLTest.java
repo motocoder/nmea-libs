@@ -1,19 +1,13 @@
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.CompassPoint;
 import net.sf.marineapi.nmea.util.Position;
 import net.sf.marineapi.nmea.util.Time;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-
-
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * This is a test class for the TLL NMEA Sentence
@@ -28,7 +22,7 @@ public class TLLTest {
 	TLLParser tll;
 	TLLParser empty;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		try {
 			empty = new TLLParser(TalkerId.RA);
@@ -90,7 +84,7 @@ public class TLLTest {
 	
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setNumber()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setNumber()} .
 	 */
 	@Test
 	public void testSetNumber() {
@@ -101,7 +95,7 @@ public class TLLTest {
 	
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setName()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setName()} .
 	 */
 	@Test
 	public void testSetName() {
@@ -111,7 +105,7 @@ public class TLLTest {
 	
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setTime()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setTime()} .
 	 */
 	@Test
 	public void testSetTime() {

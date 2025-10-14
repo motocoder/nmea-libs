@@ -19,11 +19,10 @@
  * along with Java Marine API. If not, see <http://www.gnu.org/licenses/>.
  */
 package net.sf.marineapi.nmea.parser;
-
-import static org.junit.Assert.assertEquals;
 import net.sf.marineapi.nmea.sentence.Checksum;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests the Checksum class.

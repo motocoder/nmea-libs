@@ -2,9 +2,9 @@ package net.sf.marineapi.ais.parser;
 
 import net.sf.marineapi.ais.message.AISPositionReport;
 import net.sf.marineapi.ais.util.Sixbit;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * AISPositionReportParser test, covering parsers for types 01, 02 and 03.

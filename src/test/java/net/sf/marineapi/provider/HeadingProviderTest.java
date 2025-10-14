@@ -1,11 +1,5 @@
 package net.sf.marineapi.provider;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -18,10 +12,11 @@ import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.Sentence;
 import net.sf.marineapi.provider.event.HeadingEvent;
 import net.sf.marineapi.provider.event.HeadingListener;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Kimmo Tuukkanen
@@ -37,7 +32,7 @@ public class HeadingProviderTest implements HeadingListener {
 	/**
 	 * @throws Exception
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		factory = SentenceFactory.getInstance();
 		File file = new File("target/test-classes/data/sample1.txt");
@@ -48,7 +43,7 @@ public class HeadingProviderTest implements HeadingListener {
 		event = null;
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 		instance.removeListener(this);
 	}

@@ -20,14 +20,15 @@
  */
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Before;
-import org.junit.Test;
-
 import net.sf.marineapi.nmea.sentence.RSDSentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.DisplayRotation;
 import net.sf.marineapi.nmea.util.Units;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * RSDTest
@@ -39,7 +40,7 @@ public class RSDTest {
     public static final String EXAMPLE = "$RARSD,12,90,24,45,6,270,12,315,6.5,118,96,N,N*5A";
     public RSDSentence example, empty;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         example = new RSDParser(EXAMPLE);
         empty = new RSDParser(TalkerId.RA);
@@ -287,15 +288,21 @@ public class RSDTest {
      * Test for
      * {@link net.sf.marineapi.nmea.parser.RSDParser#setRangeUnits(Units)}.
      */
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void testSetRangeUnits() {
-        Units newUnits = Units.KILOMETERS;
-        empty.setRangeUnits(newUnits);
-        assertEquals(newUnits, empty.getRangeUnits());
+        try {
+            Units newUnits = Units.KILOMETERS;
+            empty.setRangeUnits(newUnits);
+            assertEquals(newUnits, empty.getRangeUnits());
 
-        // Invalid range unit. Should throw IllegalArgumentException
-        Units invalidUnits = Units.FATHOMS;
-        empty.setRangeUnits(invalidUnits);
+            // Invalid range unit. Should throw IllegalArgumentException
+            Units invalidUnits = Units.FATHOMS;
+            empty.setRangeUnits(invalidUnits);
+            fail("should have thrown illegal argument exception");
+        }
+        catch (IllegalArgumentException e) {
+            //passing case
+        }
     }
 
     /**

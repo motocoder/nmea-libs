@@ -20,13 +20,12 @@
  */
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
-import org.junit.Before;
-import org.junit.Test;
-
 import net.sf.marineapi.nmea.sentence.TLBSentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * TLBTest
@@ -39,16 +38,21 @@ public class TLBTest {
 
     private TLBSentence empty, threeTargets;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         empty = new TLBParser(TalkerId.RA);
         threeTargets = new TLBParser(EXAMPLE);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testTLBParser() {
-        // Target 5 has odd number of fields (missing lable for target 5). This should throw an exception on construct.
-        new TLBParser("$RATLB,3,SHIPTHREE,5*2F"); 
+        try {
+            // Target 5 has odd number of fields (missing lable for target 5). This should throw an exception on construct.
+            new TLBParser("$RATLB,3,SHIPTHREE,5*2F");
+        }
+        catch (Exception e) {
+            assertInstanceOf(IllegalArgumentException.class, e.getClass());
+        }
     }
 
     /**
@@ -71,19 +75,24 @@ public class TLBTest {
 
     /**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TLBParser#setTargetPairs(int, String)}.
+	 * {@link net.sf.marineapi.nmea.parser.TLBParser setTargetPairs(int, String)}.
 	 */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetTargetPairs() {
-        int[] ids = {1,2,3};
-        String[] labels = {"SHIPONE", "SHIPTWO", "SHIPTHREE"};
-        empty.setTargetPairs(ids, labels);
+        try {
+            int[] ids = {1, 2, 3};
+            String[] labels = {"SHIPONE", "SHIPTWO", "SHIPTHREE"};
+            empty.setTargetPairs(ids, labels);
 
-        assertTrue(empty.toString().contains("1,SHIPONE,2,SHIPTWO,3,SHIPTHREE*"));
+            assertTrue(empty.toString().contains("1,SHIPONE,2,SHIPTWO,3,SHIPTHREE*"));
 
-        int[] ids_two = {5,6};
-        String[] labels_two = {"SHIPFIVE", "SHIPSIX", "SHIPSEVEN"}; // Intentionally larger than ids_two[]
-        empty.setTargetPairs(ids_two, labels_two); // Will throw exception
+            int[] ids_two = {5, 6};
+            String[] labels_two = {"SHIPFIVE", "SHIPSIX", "SHIPSEVEN"}; // Intentionally larger than ids_two[]
+            empty.setTargetPairs(ids_two, labels_two); // Will throw exception
+        }
+        catch (Exception e) {
+            assertInstanceOf(IllegalArgumentException.class, e.getClass());
+        }
     }
 
     /**

@@ -20,13 +20,13 @@
  */
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import net.sf.marineapi.nmea.sentence.SentenceId;
 import net.sf.marineapi.nmea.sentence.TalkerId;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Kimmo Tuukkanen
@@ -40,7 +40,7 @@ public class VHWTest {
 	/**
 	 * @throws Exception
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		vhw = new VHWParser(EXAMPLE);
 	}
@@ -130,7 +130,7 @@ public class VHWTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.VHWParser#setMagneticHeading()}.
+	 * {@link net.sf.marineapi.nmea.parser.VHWParser setMagneticHeading()}.
 	 */
 	@Test
 	public void testSetMagneticHeading() {
@@ -140,7 +140,7 @@ public class VHWTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.VHWParser#setSpeedKilometres()}.
+	 * {@link net.sf.marineapi.nmea.parser.VHWParser setSpeedKilometres()}.
 	 */
 	@Test
 	public void testSetSpeedKilometres() {
@@ -150,7 +150,7 @@ public class VHWTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.VHWParser#setSpeedKnots()}.
+	 * {@link net.sf.marineapi.nmea.parser.VHWParser setSpeedKnots()}.
 	 */
 	@Test
 	public void testSetSpeedKnots() {

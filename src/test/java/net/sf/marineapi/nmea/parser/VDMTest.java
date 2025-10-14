@@ -1,13 +1,11 @@
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.sentence.AISSentence;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Kimmo Tuukkanen
@@ -25,7 +23,7 @@ public class VDMTest {
 	/**
 	 * @throws Exception
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		vdm = new VDMParser(EXAMPLE);
 		frag1 = new VDMParser(PART1);

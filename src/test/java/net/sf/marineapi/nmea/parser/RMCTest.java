@@ -1,9 +1,5 @@
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.CompassPoint;
 import net.sf.marineapi.nmea.util.DataStatus;
@@ -12,9 +8,12 @@ import net.sf.marineapi.nmea.util.FaaMode;
 import net.sf.marineapi.nmea.util.Position;
 import net.sf.marineapi.nmea.util.Time;
 import net.sf.marineapi.nmea.util.NavStatus;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Tests the RMC sentence parser.
@@ -33,7 +32,7 @@ public class RMCTest {
 	RMCParser rmc;
 	RMCParser legacy;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		try {
 			empty = new RMCParser(TalkerId.GP);
@@ -71,7 +70,7 @@ public class RMCTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.RMCParser#getDataStatus()}.
+	 * {@link net.sf.marineapi.nmea.parser.RMCParser getDataStatus()}.
 	 */
 	@Test
 	public void testGetDataStatus() {
@@ -89,7 +88,7 @@ public class RMCTest {
 	}
 
 	/**
-	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser#getDay()}.
+	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser getDay()}.
 	 */
 	@Test
 	public void testGetDay() {
@@ -107,7 +106,10 @@ public class RMCTest {
 		assertEquals(CompassPoint.EAST, rmc.getDirectionOfVariation());
 	}
 
-	/**
+    private void assertTrue(boolean b) {
+    }
+
+    /**
 	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser#getMode()}.
 	 */
 	@Test
@@ -133,7 +135,7 @@ public class RMCTest {
 	}
 
 	/**
-	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser#getMonth()}
+	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser getMonth()}
 	 * .
 	 */
 	@Test
@@ -158,7 +160,10 @@ public class RMCTest {
 		assertEquals(CompassPoint.EAST, p.getLongitudeHemisphere());
 	}
 
-	/**
+    private void assertNotNull(Position p) {
+    }
+
+    /**
 	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser#getSpeed()}
 	 * .
 	 */
@@ -173,14 +178,14 @@ public class RMCTest {
 	@Test
 	public void testGetTime() {
 		Time t = rmc.getTime();
-		assertNotNull(t);
+		Assertions.assertNotNull(t);
 		assertEquals(12, t.getHour());
 		assertEquals(0, t.getMinutes());
 		assertEquals(44.567, t.getSeconds(), 0.001);
 	}
 
 	/**
-	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser#getYear()}.
+	 * Test method for {@link net.sf.marineapi.nmea.parser.RMCParser getYear()}.
 	 */
 	@Test
 	public void testGetYear() {
@@ -201,7 +206,7 @@ public class RMCTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.RMCParser#setDataStatus(DataStatus)}.
+	 * {@link net.sf.marineapi.nmea.parser.RMCParser setDataStatus(DataStatus)}.
 	 */
 	@Test
 	public void testSetDataStatus() {
@@ -252,7 +257,7 @@ public class RMCTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.RMCParser#setFaaMode()}.
+	 * {@link net.sf.marineapi.nmea.parser.RMCParser setFaaMode()}.
 	 */
 	@Test
 	public void testSetFaaMode() {
@@ -286,7 +291,7 @@ public class RMCTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.RMCParser#setFaaMode()}.
+	 * {@link net.sf.marineapi.nmea.parser.RMCParser setFaaMode()}.
 	 */
 	@Test
 	public void testSetFaaModeWhenOmitted() {

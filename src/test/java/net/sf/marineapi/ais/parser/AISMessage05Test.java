@@ -2,9 +2,10 @@ package net.sf.marineapi.ais.parser;
 
 import net.sf.marineapi.ais.message.AISMessage05;
 import net.sf.marineapi.ais.util.Sixbit;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * AIS Message 05 parser test.

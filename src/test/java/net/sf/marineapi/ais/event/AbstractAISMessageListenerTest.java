@@ -6,11 +6,9 @@ import net.sf.marineapi.ais.message.AISMessage05;
 import net.sf.marineapi.ais.parser.AISMessageFactory;
 import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.AISSentence;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AbstractAISMessageListenerTest {
 

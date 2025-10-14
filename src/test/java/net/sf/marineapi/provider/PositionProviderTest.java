@@ -20,9 +20,6 @@
  */
 package net.sf.marineapi.provider;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -35,10 +32,12 @@ import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.Sentence;
 import net.sf.marineapi.provider.event.PositionEvent;
 import net.sf.marineapi.provider.event.PositionListener;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author Kimmo Tuukkanen
@@ -51,7 +50,7 @@ public class PositionProviderTest implements PositionListener {
 	/**
 	 * @throws Exception
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		File f = new File("target/test-classes/data/Navibe-GM720.txt");
 		FileInputStream str = new FileInputStream(f);
@@ -63,7 +62,7 @@ public class PositionProviderTest implements PositionListener {
 	/**
 	 * @throws Exception
 	 */
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		instance.removeListener(this);
 	}

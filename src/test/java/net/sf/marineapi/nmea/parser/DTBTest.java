@@ -20,17 +20,16 @@
  */
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import net.sf.marineapi.nmea.sentence.DTBSentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * DTBTest - test class for Boreal GasFinder Channel B
@@ -48,7 +47,7 @@ public class DTBTest {
     private DTBSentence gasFinderMC;
     private DTBSentence gasFinder2;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         gasFinderMC = new DTBParser(EXAMPLE_MC);
         gasFinder2 = new DTBParser(EXAMPLE2);

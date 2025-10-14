@@ -1,19 +1,14 @@
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.util.Arrays;
 
 import net.sf.marineapi.nmea.sentence.RTESentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.RouteType;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * RTETest
@@ -28,7 +23,7 @@ public class RTETest {
 	private RTESentence empty;
 	private RTESentence rte;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		try {
 			empty = new RTEParser(TalkerId.GP);

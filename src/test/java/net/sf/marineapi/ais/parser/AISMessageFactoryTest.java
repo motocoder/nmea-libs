@@ -5,9 +5,9 @@ import net.sf.marineapi.ais.message.AISMessage01;
 import net.sf.marineapi.ais.message.AISMessage05;
 import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.AISSentence;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test AISMessageFactory

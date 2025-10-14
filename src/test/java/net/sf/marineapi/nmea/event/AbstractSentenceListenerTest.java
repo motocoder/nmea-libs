@@ -6,9 +6,9 @@ import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.BODSentence;
 import net.sf.marineapi.nmea.sentence.GGASentence;
 import net.sf.marineapi.nmea.sentence.Sentence;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AbstractSentenceListenerTest {
 

@@ -3,11 +3,11 @@ package net.sf.marineapi.nmea.parser;
 import net.sf.marineapi.nmea.sentence.STALKSentence;
 import net.sf.marineapi.nmea.sentence.SentenceId;
 import net.sf.marineapi.nmea.sentence.TalkerId;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * $STALK parser test
@@ -19,7 +19,7 @@ public class STALKTest {
     private STALKSentence stalk;
     private STALKSentence empty;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         try {
             stalk = new STALKParser(EXAMPLE);

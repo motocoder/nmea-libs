@@ -22,12 +22,11 @@ package net.sf.marineapi.nmea.parser;
 
 import net.sf.marineapi.nmea.sentence.AISSentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * VDOTest
@@ -40,15 +39,15 @@ public class VDOTest {
     public static final String PART1 = "!AIVDO,2,1,5,B,E1c2;q@b44ah4ah0h:2ab@70VRpU<Bgpm4:gP50HH`Th`QF5,0*7B";
     public static final String PART2 = "!AIVDO,2,2,5,B,1CQ1A83PCAH0,0*60";
 
-    private AISSentence vdo;
-    private AISSentence frag1;
-    private AISSentence frag2;
+    private static AISSentence vdo;
+    private static AISSentence frag1;
+    private static AISSentence frag2;
 
     /**
      * @throws Exception
      */
-    @Before
-    public void setUp() throws Exception {
+    @BeforeAll
+    public static void setUp() throws Exception {
         vdo = new VDOParser(EXAMPLE);
         frag1 = new VDOParser(PART1);
         frag2 = new VDOParser(PART2);

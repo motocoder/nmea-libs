@@ -1,11 +1,11 @@
 package net.sf.marineapi.nmea.parser;
 
 import net.sf.marineapi.nmea.sentence.TalkerId;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class TXTTest {
 
@@ -14,7 +14,7 @@ public class TXTTest {
     private TXTParser txt;
     private TXTParser empty;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         try {
             txt = new TXTParser(EXAMPLE);

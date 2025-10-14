@@ -20,11 +20,12 @@ package net.sf.marineapi.nmea.sentence;
  * You should have received a copy of the GNU Lesser General Public License
  * along with Java Marine API. If not, see <http://www.gnu.org/licenses/>.
  */
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * @author Kimmo Tuukkanen
@@ -34,7 +35,7 @@ public class TalkerIdTest {
 	/**
 	 * @throws Exception
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 

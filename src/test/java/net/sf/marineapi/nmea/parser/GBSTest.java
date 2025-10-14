@@ -3,10 +3,10 @@ package net.sf.marineapi.nmea.parser;
 import net.sf.marineapi.nmea.sentence.GBSSentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.Time;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GBSTest {
 
@@ -16,7 +16,7 @@ public class GBSTest {
     private GBSSentence gbs;
     private GBSSentence empty;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         gbs = new GBSParser(EXAMPLE);
         empty = new GBSParser(TalkerId.GP);

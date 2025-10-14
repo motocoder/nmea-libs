@@ -19,18 +19,16 @@
  */
 package net.sf.marineapi.ublox.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-
-import org.junit.Test;
 
 import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.Sentence;
 import net.sf.marineapi.nmea.sentence.UBXSentence;
 import net.sf.marineapi.ublox.message.UBXMessage03;
 import net.sf.marineapi.ublox.util.UbloxSatelliteInfo;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test the parsing of messages of type {@link UBXMessage03}.
@@ -48,13 +46,13 @@ public class UBXMessage03Test {
 		final SentenceFactory sf = SentenceFactory.getInstance();
 		final Sentence sentence = (Sentence) sf.createParser(message03);
 
-		assertTrue("Not a UBXSentence.", sentence instanceof UBXSentence);
+        assertInstanceOf(UBXSentence.class, sentence);
 
 		final String sentenceId = sentence.getSentenceId();
 		final int messageId = ((UBXSentence) sentence).getMessageId();
 
 		assertEquals("UBX", sentenceId);
-		assertEquals("Wrong messageId.", 3, messageId);
+		assertEquals(3, messageId);
 
 		final UBXMessage03Parser pubx03MessageParser = new UBXMessage03Parser((UBXSentence) sentence);
 

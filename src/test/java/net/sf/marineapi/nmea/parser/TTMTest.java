@@ -5,11 +5,10 @@ import net.sf.marineapi.nmea.util.AcquisitionType;
 import net.sf.marineapi.nmea.util.TargetStatus;
 import net.sf.marineapi.nmea.util.Time;
 import net.sf.marineapi.nmea.util.Units;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests the RMC sentence parser.
@@ -24,7 +23,7 @@ public class TTMTest {
 	TTMParser empty;
 	TTMParser ttm;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		try {
 			empty = new TTMParser(TalkerId.RA);
@@ -153,7 +152,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setNumber()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setNumber()} .
 	 */
 	@Test
 	public void testSetNumber() {
@@ -164,7 +163,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setDistance()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setDistance()} .
 	 */
 	@Test
 	public void testSetDistance() {
@@ -175,7 +174,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setBearing()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setBearing()} .
 	 */
 	@Test
 	public void testSetTrueBearing() {
@@ -193,7 +192,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setSpeed()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setSpeed()} .
 	 */
 	@Test
 	public void testSetSpeed() {
@@ -204,7 +203,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setTrueCourse()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setTrueCourse()} .
 	 */
 	@Test
 	public void testSetTrueCourse() {
@@ -215,7 +214,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setTrueCourse()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setTrueCourse()} .
 	 */
 	@Test
 	public void testSetRelativeCourse() {
@@ -226,7 +225,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setDistanceOfCPA()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setDistanceOfCPA()} .
 	 */
 	@Test
 	public void testSetDistanceOfCPA() {
@@ -236,7 +235,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setTimeToCPA()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setTimeToCPA()} .
 	 */
 	@Test
 	public void testSetTimeToCPA() {
@@ -256,7 +255,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setName()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setName()} .
 	 */
 	@Test
 	public void testSetName() {
@@ -266,7 +265,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setStatus()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setStatus()} .
 	 */
 	@Test
 	public void testSetStatus() {
@@ -276,7 +275,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setStatus()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setStatus()} .
 	 */
 	@Test
 	public void testSetReferenceTrue() {
@@ -291,7 +290,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setTime()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setTime()} .
 	 */
 	@Test
 	public void testSetTime() {
@@ -302,7 +301,7 @@ public class TTMTest {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.marineapi.nmea.parser.TTMParser#setAcquisitionType()} .
+	 * {@link net.sf.marineapi.nmea.parser.TTMParser setAcquisitionType()} .
 	 */
 	@Test
 	public void testSetAcquisitionType() {

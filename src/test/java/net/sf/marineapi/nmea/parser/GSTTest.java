@@ -1,14 +1,12 @@
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 import net.sf.marineapi.nmea.sentence.SentenceId;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.Time;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test the GST sentence parser.
@@ -22,7 +20,7 @@ public class GSTTest {
 	private GSTParser gst;
 	private GSTParser empty;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		try {
 			empty = new GSTParser(TalkerId.GP);

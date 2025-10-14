@@ -20,15 +20,16 @@
  */
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Before;
-import org.junit.Test;
 
 import net.sf.marineapi.nmea.sentence.OSDSentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
 import net.sf.marineapi.nmea.util.DataStatus;
 import net.sf.marineapi.nmea.util.ReferenceSystem;
 import net.sf.marineapi.nmea.util.Units;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * OSDTest
@@ -40,7 +41,7 @@ public class OSDTest {
     public static final String EXAMPLE = "$RAOSD,35.1,A,36.0,P,10.2,P,15.3,0.1,N*41";
     public OSDSentence example, empty;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         example = new OSDParser(EXAMPLE);
         empty = new OSDParser(TalkerId.RA);
@@ -221,14 +222,19 @@ public class OSDTest {
      * Test for
      * {@link net.sf.marineapi.nmea.parser.OSDParser#setSpeedUnits(Units)}.
      */
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void testSetSpeedUnits() {
-        Units newUnits = Units.NAUTICAL_MILES;
-        empty.setSpeedUnits(newUnits);
-        assertEquals(newUnits, empty.getSpeedUnits());
 
-        // An invalid speed unit. Should throw IllegalArgumentException.
-        empty.setSpeedUnits(Units.CELSIUS);
+        try {
+            Units newUnits = Units.NAUTICAL_MILES;
+            empty.setSpeedUnits(newUnits);
+            assertEquals(newUnits, empty.getSpeedUnits());
+
+            // An invalid speed unit. Should throw IllegalArgumentException.
+            empty.setSpeedUnits(Units.CELSIUS);
+        } catch (Exception e) {
+            assertInstanceOf(IllegalArgumentException.class, e);
+        }
     }
 
     

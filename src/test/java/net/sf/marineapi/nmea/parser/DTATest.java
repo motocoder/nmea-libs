@@ -20,17 +20,16 @@
  */
 package net.sf.marineapi.nmea.parser;
 
-import static org.junit.Assert.assertEquals;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import net.sf.marineapi.nmea.sentence.DTASentence;
 import net.sf.marineapi.nmea.sentence.TalkerId;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * DTATest - test class for Boreal GasFinder
@@ -48,7 +47,7 @@ public class DTATest {
     private DTASentence gasFinderMC;
     private DTASentence gasFinder2;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         gasFinderMC = new DTAParser(EXAMPLE_MC);
         gasFinder2 = new DTAParser(EXAMPLE2);
