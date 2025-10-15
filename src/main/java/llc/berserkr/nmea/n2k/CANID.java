@@ -8,6 +8,7 @@ public class CANID {
     private static byte RESERVED_AND = ByteUtils.bitStringToUnsignedByteArray("00010000")[0];//(byte) 0x10;
     private static byte DATAPAGE_AND = ByteUtils.bitStringToUnsignedByteArray("00001000")[0];//(byte) 0x08;
     private static byte PDU_SHIFT_AND = ByteUtils.bitStringToUnsignedByteArray("00011111")[0];//(byte) 0x1F;
+
     private final byte priority;
     private final boolean reserved;
     private final boolean datapage;
@@ -47,10 +48,8 @@ public class CANID {
     26/3
     27/2
     28/1
-    ------------- data ( 0 - 64 bits )
-    * bit startt 4 length 8 (Suspect Parameter Number (SPN) 1)
-    * bit start 24 length 16 SPN2
-    * SPN are where the indentifiers for the data are stored
+    29/0
+
      */
 
     public CANID(final byte[] rawPacket) {
