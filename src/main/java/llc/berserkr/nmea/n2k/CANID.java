@@ -4,10 +4,10 @@ import llc.berserkr.nmea.n2k.util.ByteUtils;
 
 public class CANID {
 
-    private static byte PRIORITY_AND = (byte) 0xE0;
-    private static byte RESERVED_AND = (byte) 0x10;
-    private static byte DATAPAGE_AND = (byte) 0x08;
-    private static byte PDU_SHIFT_AND = (byte) 0x1F;
+    private static byte PRIORITY_AND =  ByteUtils.bitStringToUnsignedByteArray("11100000")[0];//(byte) 0xE0;
+    private static byte RESERVED_AND = ByteUtils.bitStringToUnsignedByteArray("00010000")[0];//(byte) 0x10;
+    private static byte DATAPAGE_AND = ByteUtils.bitStringToUnsignedByteArray("00001000")[0];//(byte) 0x08;
+    private static byte PDU_SHIFT_AND = ByteUtils.bitStringToUnsignedByteArray("00011111")[0];//(byte) 0x1F;
     private final byte priority;
     private final boolean reserved;
     private final boolean datapage;
