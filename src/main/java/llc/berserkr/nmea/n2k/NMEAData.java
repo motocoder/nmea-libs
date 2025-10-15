@@ -5,6 +5,8 @@ import llc.berserkr.nmea.n2k.util.ByteUtils;
 import java.util.BitSet;
 
 public class NMEAData {
+
+
     /*
 
     ------------- data ( 0 - 64 bits )
