@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CANIDTest {
 
     @Test
-    public void testCanID() {
+    public void testCanIDPriority() {
 
         {
 
@@ -41,6 +41,10 @@ public class CANIDTest {
 
         }
 
+    }
+    @Test
+    public void testCanIDReserved() {
+
         {
             byte bite1 = (byte) 0xFF; //everything 1
             byte bite2 = (byte) 0x10; //only reserved 1
@@ -63,6 +67,10 @@ public class CANIDTest {
             assertEquals(false, canid1.getReserved());
 
         }
+    }
+
+    @Test
+    public void testCanIDDatapage() {
 
         {
             byte bite1 = (byte) 0xFF; //everything 1
@@ -86,33 +94,41 @@ public class CANIDTest {
             assertEquals(false, canid1.getDatapage());
 
         }
+    }
+
+    @Test
+    public void testCanIDPDU() {
 
         {
 
-            byte[] pduPacket = ByteUtils.bitStringToUnsignedByteArray("00000111"+ "11111000" + "00000000"); //only pdu is 1s
+            byte[] pduPacket = ByteUtils.bitStringToUnsignedByteArray("00000111" + "11111000" + "00000000"); //only pdu is 1s
 
             final CANID canid = new CANID(pduPacket);
             assertEquals(false, canid.getDatapage());
             assertEquals(false, canid.getReserved());
-            assertEquals((byte)0x00, canid.getPriority());
-            assertEquals((byte)0xFF, canid.getPduFormat());
-            assertEquals((byte)0x00, canid.getSourceAddress());
+            assertEquals((byte) 0x00, canid.getPriority());
+            assertEquals((byte) 0xFF, canid.getPduFormat());
+            assertEquals((byte) 0x00, canid.getSourceAddress());
 
         }
 
         {
 
-            byte[] pduPacket = ByteUtils.bitStringToUnsignedByteArray("00000000"+ "00000000" + "00000000"); //only pdu is 1s
+            byte[] pduPacket = ByteUtils.bitStringToUnsignedByteArray("00000000" + "00000000" + "00000000"); //only pdu is 1s
 
             final CANID canid = new CANID(pduPacket);
 
             assertEquals(false, canid.getDatapage());
             assertEquals(false, canid.getReserved());
             assertEquals(0, canid.getPriority());
-            assertEquals((byte)0x00, canid.getPduFormat());
-              assertEquals((byte)0x00, canid.getSourceAddress());
+            assertEquals((byte) 0x00, canid.getPduFormat());
+            assertEquals((byte) 0x00, canid.getSourceAddress());
 
         }
+    }
+
+    @Test
+    public void testCanIDSourceAddress() {
 
         {
 
@@ -142,6 +158,6 @@ public class CANIDTest {
 
         }
 
-
     }
+
 }
