@@ -21,4 +21,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty "java.library.path", file("${project(":canboat").buildDir}/lib/main/debug").absolutePath
 }
+
+test.dependsOn  ':canboat:linkDebug'

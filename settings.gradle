@@ -1,1 +1,2 @@
 rootProject.name = 'nmea-libs'
+include 'canboat'
